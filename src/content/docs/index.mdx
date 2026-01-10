@@ -5,7 +5,116 @@ template: splash
 hero:
   tagline: We are here to stay, we make happy software.
   image:
-    html: <div style="font-size:8rem;line-height:1;">🍎</div>
+    html: |
+      <div class="hero-animation">
+        <style>
+          .hero-animation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .phone-container {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+          }
+          .phone {
+            width: 120px;
+            height: 240px;
+            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            border-radius: 24px;
+            border: 3px solid #2d2d44;
+            position: relative;
+            box-shadow:
+              0 25px 50px -12px rgba(0, 0, 0, 0.5),
+              0 0 60px rgba(99, 102, 241, 0.3),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+          }
+          .phone::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 6px;
+            background: #2d2d44;
+            border-radius: 3px;
+          }
+          .phone-screen {
+            position: absolute;
+            top: 20px;
+            left: 8px;
+            right: 8px;
+            bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            animation: screenGlow 4s ease-in-out infinite;
+          }
+          .screen-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+          }
+          .app-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+          }
+          .glow-ring {
+            position: absolute;
+            width: 180px;
+            height: 300px;
+            border-radius: 40px;
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            animation: ringPulse 3s ease-in-out infinite;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+          .glow-ring:nth-child(2) {
+            animation-delay: 1s;
+            width: 220px;
+            height: 340px;
+          }
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+          }
+          @keyframes screenGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+          }
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+          }
+          @keyframes ringPulse {
+            0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.1; transform: translate(-50%, -50%) scale(1.1); }
+          }
+        </style>
+        <div class="phone-container">
+          <div class="glow-ring"></div>
+          <div class="glow-ring"></div>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="screen-content">
+                <div class="app-icon"></div>
+                <div class="app-icon" style="animation-delay: 0.3s;"></div>
+                <div class="app-icon" style="animation-delay: 0.6s;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   actions:
     - text: Our Apps
       link: /splashblock/privacy/
