@@ -6,21 +6,18 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'eternt',
+			tagline: 'We are here to stay, we make happy software',
+			social: [{ icon: 'email', label: 'Contact', href: 'mailto:raphaeldlv@gmail.com' }],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Our Apps',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'Splash Block', slug: 'splashblock/privacy' },
 					],
 				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
 			],
+			customCss: [],
 		}),
 	],
 });
