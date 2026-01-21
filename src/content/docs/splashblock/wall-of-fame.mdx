@@ -1,6 +1,6 @@
 ---
 title: Influencer Wall of Fame
-description: Meet the amazing creators who reviewed Splash Block! Join our influencer program and get featured on our Wall of Fame with a link to your TikTok channel.
+description: Meet the amazing micro-influencers who reviewed Splash Block! Create a TikTok review video and get featured on our Wall of Fame with shoutouts and promotion.
 head:
   - tag: meta
     attrs:
@@ -9,11 +9,11 @@ head:
   - tag: meta
     attrs:
       property: og:description
-      content: Discover talented TikTok creators who made awesome Splash Block review videos. Want to be featured? Join our influencer program!
+      content: Discover talented TikTok creators who made awesome Splash Block review videos. Micro-influencers welcome - get featured and grow your channel!
   - tag: meta
     attrs:
       name: keywords
-      content: Splash Block, influencer, TikTok, game review, Wall of Fame, mobile game, puzzle game, creators
+      content: Splash Block, micro influencer, TikTok, game review, Wall of Fame, mobile game, puzzle game, creators, grow TikTok followers
   - tag: meta
     attrs:
       name: robots
@@ -151,6 +151,32 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
       display: inline-block;
       animation: bounce 2s ease-in-out infinite;
     }
+    .requirements-box {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .requirements-box h3 {
+      color: #22c55e;
+      margin-top: 0;
+    }
+    .requirements-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .requirements-list li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .check-icon {
+      color: #22c55e;
+      font-size: 1.2rem;
+    }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
@@ -166,12 +192,21 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
   <span class="trophy-icon" style="font-size: 3rem;">🏆</span>
   <h2 style="margin-top: 1rem;">Welcome to the Wall of Fame!</h2>
   <p>
-    We celebrate the amazing creators who help spread the word about <strong>Splash Block</strong>.
-    Every influencer featured here made an awesome review video and earned their spot in gaming history!
+    We celebrate amazing <strong>micro-influencers</strong> who help spread the word about <strong>Splash Block</strong>.
+    Every creator featured here made an awesome review video and earned their spot in gaming history!
   </p>
-  <a href="mailto:raphaeldlv@gmail.com?subject=Splash Block Influencer Program" class="fame-cta">
-    🎬 Want to be featured? Join the program!
-  </a>
+  <p style="margin-top: 1rem; opacity: 0.9;">
+    <strong>Want to grow your TikTok?</strong> Create a review, get approved, and we'll give you shoutouts and feature you right here!
+  </p>
+</div>
+
+<div class="requirements-box">
+  <h3>✅ Who Can Join?</h3>
+  <ul class="requirements-list">
+    <li><span class="check-icon">✓</span> Have less than 1,000 followers (micro-influencers welcome!)</li>
+    <li><span class="check-icon">✓</span> Want more profile attention and growth</li>
+    <li><span class="check-icon">✓</span> Faceless videos are totally fine</li>
+  </ul>
 </div>
 
 ## 🌟 Our Featured Creators
@@ -200,31 +235,13 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
   {/* === INFLUENCER CARDS GO HERE === */}
 
-  {/* Example (remove when you have real influencers):
-  <div class="influencer-card">
-    <div class="influencer-avatar">🎮</div>
-    <div class="influencer-name">@GamerExample</div>
-    <div class="influencer-links">
-      <a href="https://tiktok.com/@example" target="_blank" rel="noopener" class="influencer-link tiktok">
-        📱 Follow on TikTok
-      </a>
-      <a href="https://tiktok.com/@example/video/123" target="_blank" rel="noopener" class="influencer-link video">
-        🎬 Watch Review
-      </a>
-    </div>
-  </div>
-  */}
-
 </div>
 
 {/* Show this when no influencers yet */}
 <div class="empty-state">
   <div class="empty-state-icon">🚀</div>
   <h3>Be the First!</h3>
-  <p>Our Wall of Fame is waiting for its first star. Create a 1-minute Splash Block review video and claim your spot!</p>
-  <a href="mailto:raphaeldlv@gmail.com?subject=Splash Block Review Submission" class="fame-cta">
-    Submit Your Video
-  </a>
+  <p>Our Wall of Fame is waiting for its first star. Create a 1-minute Splash Block review video on TikTok and claim your spot!</p>
 </div>
 
 ---
@@ -232,22 +249,27 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ## 📋 How to Get Featured
 
 <CardGrid>
-  <Card title="1. Download Splash Block" icon="rocket">
-    Get the game from the App Store and play a few levels to experience the fun!
+  <Card title="1. Download & Play" icon="rocket">
+    Get Splash Block from the App Store and play a few levels to experience the fun!
   </Card>
-  <Card title="2. Create Your Review" icon="star">
-    Make a 1-minute TikTok video reviewing Splash Block. Be creative and authentic!
+  <Card title="2. Create Your Video" icon="star">
+    Make a creative 1-minute TikTok video reviewing Splash Block. Be authentic, be you! Faceless videos welcome.
   </Card>
-  <Card title="3. Submit Your Video" icon="email">
-    Send us the link to your video at raphaeldlv@gmail.com with your channel info.
+  <Card title="3. Post & Tag Us" icon="seti:video">
+    Post your video on TikTok and send us the link. Use #SplashBlock to help us find you!
   </Card>
   <Card title="4. Get Featured!" icon="approve-check">
-    Once approved, you'll be added to our Wall of Fame with links to your channel!
+    We check, we validate, we promote! Once approved, you'll appear on the Wall of Fame within 24 hours with shoutouts to grow your channel.
   </Card>
 </CardGrid>
 
 ---
 
-<div style="text-align: center; margin-top: 2rem; opacity: 0.7;">
-  <p>Want to partner with eternt? <a href="mailto:raphaeldlv@gmail.com">Contact us</a></p>
+<div style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(99, 102, 241, 0.05); border-radius: 16px;">
+  <p style="font-size: 1.1rem; margin: 0;">
+    <strong>Ready to join?</strong> Post your Splash Block review on TikTok and tag us!
+  </p>
+  <p style="opacity: 0.7; margin-top: 0.5rem;">
+    Approved creators appear on the Wall of Fame within 24 hours.
+  </p>
 </div>
