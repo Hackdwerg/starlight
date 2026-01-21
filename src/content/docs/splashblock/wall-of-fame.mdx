@@ -1,0 +1,253 @@
+---
+title: Influencer Wall of Fame
+description: Meet the amazing creators who reviewed Splash Block! Join our influencer program and get featured on our Wall of Fame with a link to your TikTok channel.
+head:
+  - tag: meta
+    attrs:
+      property: og:title
+      content: Splash Block Influencer Wall of Fame | eternt
+  - tag: meta
+    attrs:
+      property: og:description
+      content: Discover talented TikTok creators who made awesome Splash Block review videos. Want to be featured? Join our influencer program!
+  - tag: meta
+    attrs:
+      name: keywords
+      content: Splash Block, influencer, TikTok, game review, Wall of Fame, mobile game, puzzle game, creators
+  - tag: meta
+    attrs:
+      name: robots
+      content: index, follow
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<div class="fame-header">
+  <style>{`
+    .fame-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .fame-intro {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .fame-cta {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .fame-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+      color: white;
+    }
+    .influencer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .influencer-card {
+      background: linear-gradient(145deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%);
+      border: 2px solid rgba(99, 102, 241, 0.3);
+      border-radius: 20px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .influencer-card::before {
+      content: '⭐';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 3rem;
+      opacity: 0.1;
+      transform: rotate(15deg);
+    }
+    .influencer-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(168, 85, 247, 0.6);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+    }
+    .influencer-avatar {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      animation: avatarPulse 3s ease-in-out infinite;
+    }
+    .influencer-name {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .influencer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .influencer-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(99, 102, 241, 0.2);
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .influencer-link:hover {
+      background: rgba(99, 102, 241, 0.4);
+    }
+    .influencer-link.tiktok {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .influencer-link.tiktok:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .influencer-link.video {
+      background: rgba(168, 85, 247, 0.2);
+    }
+    .influencer-link.video:hover {
+      background: rgba(168, 85, 247, 0.4);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(99, 102, 241, 0.05);
+      border: 2px dashed rgba(99, 102, 241, 0.3);
+      border-radius: 20px;
+      margin: 2rem 0;
+    }
+    .empty-state-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    .trophy-icon {
+      display: inline-block;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes avatarPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+      50% { box-shadow: 0 0 20px 5px rgba(99, 102, 241, 0.2); }
+    }
+  `}</style>
+</div>
+
+<div class="fame-intro">
+  <span class="trophy-icon" style="font-size: 3rem;">🏆</span>
+  <h2 style="margin-top: 1rem;">Welcome to the Wall of Fame!</h2>
+  <p>
+    We celebrate the amazing creators who help spread the word about <strong>Splash Block</strong>.
+    Every influencer featured here made an awesome review video and earned their spot in gaming history!
+  </p>
+  <a href="mailto:raphaeldlv@gmail.com?subject=Splash Block Influencer Program" class="fame-cta">
+    🎬 Want to be featured? Join the program!
+  </a>
+</div>
+
+## 🌟 Our Featured Creators
+
+{/* ============================================================
+    HOW TO ADD A NEW INFLUENCER:
+
+    Copy the template below and fill in the details:
+
+    <div class="influencer-card">
+      <div class="influencer-avatar">🎮</div>
+      <div class="influencer-name">CHANNEL NAME HERE</div>
+      <div class="influencer-links">
+        <a href="TIKTOK_CHANNEL_URL" target="_blank" rel="noopener" class="influencer-link tiktok">
+          📱 Follow on TikTok
+        </a>
+        <a href="VIDEO_URL" target="_blank" rel="noopener" class="influencer-link video">
+          🎬 Watch Review
+        </a>
+      </div>
+    </div>
+
+    ============================================================ */}
+
+<div class="influencer-grid">
+
+  {/* === INFLUENCER CARDS GO HERE === */}
+
+  {/* Example (remove when you have real influencers):
+  <div class="influencer-card">
+    <div class="influencer-avatar">🎮</div>
+    <div class="influencer-name">@GamerExample</div>
+    <div class="influencer-links">
+      <a href="https://tiktok.com/@example" target="_blank" rel="noopener" class="influencer-link tiktok">
+        📱 Follow on TikTok
+      </a>
+      <a href="https://tiktok.com/@example/video/123" target="_blank" rel="noopener" class="influencer-link video">
+        🎬 Watch Review
+      </a>
+    </div>
+  </div>
+  */}
+
+</div>
+
+{/* Show this when no influencers yet */}
+<div class="empty-state">
+  <div class="empty-state-icon">🚀</div>
+  <h3>Be the First!</h3>
+  <p>Our Wall of Fame is waiting for its first star. Create a 1-minute Splash Block review video and claim your spot!</p>
+  <a href="mailto:raphaeldlv@gmail.com?subject=Splash Block Review Submission" class="fame-cta">
+    Submit Your Video
+  </a>
+</div>
+
+---
+
+## 📋 How to Get Featured
+
+<CardGrid>
+  <Card title="1. Download Splash Block" icon="rocket">
+    Get the game from the App Store and play a few levels to experience the fun!
+  </Card>
+  <Card title="2. Create Your Review" icon="star">
+    Make a 1-minute TikTok video reviewing Splash Block. Be creative and authentic!
+  </Card>
+  <Card title="3. Submit Your Video" icon="email">
+    Send us the link to your video at raphaeldlv@gmail.com with your channel info.
+  </Card>
+  <Card title="4. Get Featured!" icon="approve-check">
+    Once approved, you'll be added to our Wall of Fame with links to your channel!
+  </Card>
+</CardGrid>
+
+---
+
+<div style="text-align: center; margin-top: 2rem; opacity: 0.7;">
+  <p>Want to partner with eternt? <a href="mailto:raphaeldlv@gmail.com">Contact us</a></p>
+</div>
