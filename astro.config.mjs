@@ -11,9 +11,10 @@ export default defineConfig({
 			social: [{ icon: 'email', label: 'Contact', href: 'mailto:raphaeldlv@gmail.com' }],
 			sidebar: [
 				{
-					label: 'Our Apps',
+					label: 'Splash Block',
 					items: [
-						{ label: 'Splash Block', slug: 'splashblock/privacy' },
+						{ label: 'Wall of Fame', slug: 'splashblock/wall-of-fame' },
+						{ label: 'Privacy Policy', slug: 'splashblock/privacy' },
 					],
 				},
 			],
