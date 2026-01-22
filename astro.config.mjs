@@ -8,7 +8,7 @@ export default defineConfig({
 		starlight({
 			title: 'eternt',
 			tagline: 'We are here to stay, we make happy software',
-			social: [{ icon: 'email', label: 'Contact', href: 'mailto:raphaeldlv@gmail.com' }],
+			social: [{ icon: 'email', label: 'Contact', href: 'mailto:info@eternt.com' }],
 			sidebar: [
 				{
 					label: 'Splash Block',

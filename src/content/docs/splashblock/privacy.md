@@ -37,4 +37,4 @@ We do not sell your data. Data is only shared with the third-party services list
 
 ## Contact
 
-If you have questions about this privacy policy, contact us at: [raphaeldlv@gmail.com](mailto:raphaeldlv@gmail.com)
+If you have questions about this privacy policy, contact us at: [info@eternt.com](mailto:info@eternt.com)
