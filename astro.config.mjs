@@ -17,6 +17,12 @@ export default defineConfig({
 						{ label: 'Privacy Policy', slug: 'splashblock/privacy' },
 					],
 				},
+				{
+					label: 'WiseDay',
+					items: [
+						{ label: 'Privacy Policy', slug: 'wiseday/privacy' },
+					],
+				},
 			],
 			customCss: [],
 		}),
