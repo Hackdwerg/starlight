@@ -18,9 +18,9 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'WiseDay',
+					label: 'TruWord',
 					items: [
-						{ label: 'Privacy Policy', slug: 'wiseday/privacy' },
+						{ label: 'Privacy Policy', slug: 'truword/privacy' },
 					],
 				},
 			],
