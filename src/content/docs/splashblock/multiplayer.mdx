@@ -1,0 +1,537 @@
+---
+title: Multiplayer Time Attack
+description: Challenge friends to real-time puzzle battles! Two players, same puzzle, 2 minutes - highest score wins in Splash Block's new multiplayer mode.
+head:
+  - tag: meta
+    attrs:
+      property: og:title
+      content: Multiplayer Time Attack | Splash Block
+  - tag: meta
+    attrs:
+      property: og:description
+      content: Challenge friends to real-time puzzle battles! Two players, same puzzle, 2 minutes - highest score wins.
+  - tag: meta
+    attrs:
+      name: keywords
+      content: Splash Block, multiplayer, time attack, puzzle game, versus mode, real-time competition, mobile game, two player
+  - tag: meta
+    attrs:
+      name: robots
+      content: index, follow
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<div class="multiplayer-page">
+<style>{`
+  .multiplayer-page {
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --gradient-battle: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(254, 202, 87, 0.1) 100%);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 28px;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+    animation: heroPulse 8s ease-in-out infinite;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-battle);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: white;
+    margin-bottom: 1.5rem;
+    animation: badgePulse 2s ease-in-out infinite;
+  }
+  .hero-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .hero-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    font-size: 3rem;
+  }
+  .hero-icon {
+    animation: iconBounce 2s ease-in-out infinite;
+  }
+  .hero-icon:nth-child(2) {
+    animation-delay: 0.3s;
+    font-size: 2rem;
+  }
+  .hero-icon:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  /* Concept Section */
+  .concept-box {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  .concept-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-battle);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .concept-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  .concept-highlight {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 107, 107, 0.2);
+    border-radius: 8px;
+    font-weight: 600;
+    margin: 0 0.25rem;
+  }
+
+  /* Flow Section */
+  .flow-section {
+    margin: 4rem 0;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .section-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-primary);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .flow-step::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 4px 0 0 4px;
+  }
+  .flow-step:nth-child(1)::before { background: #667eea; }
+  .flow-step:nth-child(2)::before { background: #a855f7; }
+  .flow-step:nth-child(3)::before { background: #43e97b; }
+  .flow-step:nth-child(4)::before { background: #ff6b6b; }
+  .flow-step:nth-child(5)::before { background: #feca57; }
+  .flow-step:hover {
+    transform: translateX(8px);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+  }
+  .flow-number {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+  }
+  .flow-step:nth-child(1) .flow-number { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  .flow-step:nth-child(2) .flow-number { background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%); }
+  .flow-step:nth-child(3) .flow-number { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+  .flow-step:nth-child(4) .flow-number { background: linear-gradient(135deg, #ff6b6b 0%, #f093fb 100%); }
+  .flow-step:nth-child(5) .flow-number { background: linear-gradient(135deg, #feca57 0%, #ff6b6b 100%); }
+  .flow-content {
+    flex: 1;
+  }
+  .flow-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+  }
+  .flow-desc {
+    opacity: 0.7;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .flow-icon {
+    font-size: 1.75rem;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  /* Features Grid */
+  .features-section {
+    margin: 4rem 0;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .feature-card {
+    padding: 2rem 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  .feature-card:nth-child(1)::before { background: var(--gradient-battle); }
+  .feature-card:nth-child(2)::before { background: var(--gradient-success); }
+  .feature-card:nth-child(3)::before { background: var(--gradient-primary); }
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+  }
+  .feature-card:hover::before {
+    transform: scaleX(1);
+  }
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .feature-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .feature-desc {
+    opacity: 0.7;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Solo Mode Section */
+  .solo-section {
+    background: linear-gradient(135deg, rgba(67, 233, 123, 0.1) 0%, rgba(56, 249, 215, 0.05) 100%);
+    border: 1px solid rgba(67, 233, 123, 0.3);
+    border-radius: 24px;
+    padding: 2.5rem;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .solo-icon {
+    font-size: 4rem;
+    min-width: 80px;
+    text-align: center;
+    animation: soloFloat 3s ease-in-out infinite;
+  }
+  .solo-content {
+    flex: 1;
+  }
+  .solo-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #43e97b;
+  }
+  .solo-desc {
+    opacity: 0.85;
+    line-height: 1.7;
+    font-size: 1.05rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border-radius: 28px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    margin: 3rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    animation: ctaPulse 8s ease-in-out infinite;
+  }
+  .cta-content {
+    position: relative;
+    z-index: 1;
+  }
+  .cta-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .cta-text {
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  /* Animations */
+  @keyframes heroPulse {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(2%, 2%); }
+  }
+  @keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  @keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes soloFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(3deg); }
+  }
+  @keyframes ctaPulse {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(2%, 2%); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    .solo-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    .flow-step {
+      padding: 1.25rem 1.5rem;
+    }
+  }
+`}</style>
+
+{/* Hero Section */}
+<div class="hero-section">
+  <div class="hero-content">
+    <span class="hero-badge">New Game Mode</span>
+    <h1 class="hero-title">Multiplayer Time Attack</h1>
+    <p class="hero-subtitle">
+      Challenge your friends to real-time puzzle battles. Two players, same puzzle, 2 minutes on the clock — may the best player win!
+    </p>
+    <div class="hero-icons">
+      <span class="hero-icon">👤</span>
+      <span class="hero-icon">⚔️</span>
+      <span class="hero-icon">👤</span>
+    </div>
+  </div>
+</div>
+
+{/* The Concept */}
+<div class="concept-box">
+  <div class="concept-title">The Concept</div>
+  <p class="concept-text">
+    Two players compete in real-time, each playing the <strong>same puzzle</strong> for
+    <span class="concept-highlight">2 minutes</span>. Clear blocks, rack up points, and when time runs out —
+    <strong>highest score wins</strong>!
+  </p>
+</div>
+
+{/* How It Works */}
+<div class="flow-section">
+  <div class="section-header">
+    <span class="section-label">How It Works</span>
+    <h2 class="section-title">The Flow</h2>
+  </div>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-number">1</div>
+      <div class="flow-content">
+        <div class="flow-title">Challenge a Friend</div>
+        <div class="flow-desc">Player 1 creates a match and gets a unique code to share</div>
+      </div>
+      <div class="flow-icon">🎯</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-number">2</div>
+      <div class="flow-content">
+        <div class="flow-title">Join the Match</div>
+        <div class="flow-desc">Player 2 enters the code to join the battle</div>
+      </div>
+      <div class="flow-icon">🔗</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-number">3</div>
+      <div class="flow-content">
+        <div class="flow-title">Ready Up</div>
+        <div class="flow-desc">Both players are connected — countdown begins!</div>
+      </div>
+      <div class="flow-icon">✅</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-number">4</div>
+      <div class="flow-content">
+        <div class="flow-title">Battle!</div>
+        <div class="flow-desc">Both play simultaneously for 2 minutes, clearing blocks to score points</div>
+      </div>
+      <div class="flow-icon">🧩</div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-number">5</div>
+      <div class="flow-content">
+        <div class="flow-title">Results</div>
+        <div class="flow-desc">Scores are compared — the winner is crowned!</div>
+      </div>
+      <div class="flow-icon">🏆</div>
+    </div>
+  </div>
+</div>
+
+{/* Key Features */}
+<div class="features-section">
+  <div class="section-header">
+    <span class="section-label">Features</span>
+    <h2 class="section-title">Key Features</h2>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⏱️</div>
+      <div class="feature-title">Same Time Limit</div>
+      <div class="feature-desc">Both players get exactly 2 minutes — perfectly fair competition</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Real-Time Play</div>
+      <div class="feature-desc">Compete simultaneously — feel the pressure of knowing your opponent is playing right now</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🎮</div>
+      <div class="feature-title">Easy Matchmaking</div>
+      <div class="feature-desc">Share a simple code with friends — no accounts or friend lists needed</div>
+    </div>
+  </div>
+</div>
+
+{/* Solo Mode */}
+<div class="solo-section">
+  <div class="solo-icon">🎯</div>
+  <div class="solo-content">
+    <div class="solo-title">Practice Mode Available</div>
+    <div class="solo-desc">
+      Not ready for multiplayer yet? Play Solo to practice your skills and compete against your own high score. Perfect for warming up before challenging your friends!
+    </div>
+  </div>
+</div>
+
+{/* CTA */}
+<div class="cta-section">
+  <div class="cta-content">
+    <h2 class="cta-title">Ready to Challenge Your Friends?</h2>
+    <p class="cta-text">Download Splash Block and start your first multiplayer battle!</p>
+  </div>
+</div>
+
+</div>

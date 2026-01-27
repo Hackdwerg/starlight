@@ -13,6 +13,7 @@ export default defineConfig({
 				{
 					label: 'Splash Block',
 					items: [
+						{ label: 'Multiplayer', slug: 'splashblock/multiplayer' },
 						{ label: 'Wall of Fame', slug: 'splashblock/wall-of-fame' },
 						{ label: 'Privacy Policy', slug: 'splashblock/privacy' },
 					],
